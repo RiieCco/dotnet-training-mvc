@@ -1,0 +1,155 @@
+﻿@model asvslabs.ViewModels.JobViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin">
+                            <div class="user-data full-width">
+                                <div class="user-profile">
+                                    <div class="username-dt">
+                                        <div class="usr-pic">
+                                            <img src="http://via.placeholder.com/100x100" alt="">
+                                        </div>
+                                    </div><!--username-dt end-->
+                                    <div class="user-specs">
+                                        <h3>John Doe</h3>
+                                        <span>Graphic Designer at Self Employed</span>
+                                    </div>
+                                </div><!--user-profile end-->
+                                <ul class="user-fw-status">
+                                    <li>
+                                        <a href="#" title="">View Profile</a>
+                                    </li>
+                                </ul>
+                            </div><!--user-data end-->
+
+                            <div class="tags-sec full-width">
+                                <ul>
+                                    <li><a href="#" title="">Help Center</a></li>
+                                    <li><a href="#" title="">About</a></li>
+                                    <li><a href="#" title="">Privacy Policy</a></li>
+                                    <li><a href="#" title="">Community Guidelines</a></li>
+                                    <li><a href="#" title="">Cookies Policy</a></li>
+                                    <li><a href="#" title="">Career</a></li>
+                                    <li><a href="#" title="">Language</a></li>
+                                    <li><a href="#" title="">Copyright Policy</a></li>
+                                </ul>
+                                <div class="cp-sec">
+                                    <img src="images/logo2.png" alt="">
+                                    <p><img src="images/cp.png" alt="">Copyright 2018</p>
+                                </div>
+                            </div><!--tags-sec end-->
+                        </div><!--main-left-sidebar end-->
+                    </div>
+                    <div class="col-lg-6 col-md-8 no-pd">
+                        <div class="main-ws-sec">
+                            <div class="post-topbar">
+
+                                <div class="post-st">
+                                    <ul>
+                                        <li><a class="post-jb active" href="#" title="">Post a Job</a></li>
+                                    </ul>
+                                </div><!--post-st end-->
+                            </div><!--post-topbar end-->
+                            <div class="posts-section">
+                            @foreach(var job in Model.JobList){
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="http://via.placeholder.com/50x50" alt="">
+                                            <div class="usy-name">
+                                                <h3>John Doe</h3>
+                                                <span><img src="images/clock.png" alt="">3 min ago</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="job_descp">
+                                        <h3>@Html.DisplayFor(x => job.Title)</h3>
+                                        <ul class="job-dt">
+                                            <li><a href="#" title="">@Html.DisplayFor(x => job.Employment) /Hours a week</a></li>
+                                            <li><span>$@Html.DisplayFor(x => job.Price) /hr</span></li>
+                                        </ul>
+                                        <p>@Html.DisplayFor(x => job.Description) <br/><br/> <a href="@Html.DisplayFor(x => job.Webiste)" target="_blank">Show website</a></p>
+                                        <ul class="skill-tags">
+                                            <li><a href="#" title="">@Html.DisplayFor(x => job.Skills)</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!--post-bar end-->
+                            }
+
+                            </div><!--posts-section end-->
+                        </div><!--main-ws-sec end-->
+                    </div>
+                    <div class="col-lg-3 pd-right-none no-pd">
+                        <div class="right-sidebar">
+                            <div class="widget widget-about">
+                                <img src="images/wd-logo.png" alt="">
+                                <div class="sign_link">
+                                    <a href="http://defdev.eu" title="">Learn More</a>
+                                </div>
+                            </div><!--widget-about end-->
+                        </div><!--right-sidebar end-->
+                    </div>
+                </div>
+            </div><!-- main-section-data end-->
+        </div>
+    </div>
+</main>
+
+<div class="post-popup job_post">
+    <div class="post-project">
+        <h3>Post a job</h3>
+        <div class="post-project-fields">
+
+            @using (Html.BeginForm("PostJob", "Home", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(x => x.Title,
+                                       new { @class = "form-control", placeholder = "job tile", required = "required" })
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="inp-field">
+                            @Html.TextBoxFor(x => x.Webiste,
+                                      new { @class = "form-control", placeholder = "http://website.com", required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(x => x.Skills,
+                                  new { @class = "form-control", placeholder = "HTML, JAVA, Docker", required = "required" })
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="price-br">
+                            @Html.TextBoxFor(x => x.Price,
+                                      new { @class = "form-control", placeholder = "Price", required = "required" })
+                            <i class="la la-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="inp-field">
+                            @Html.TextBoxFor(x => x.Employment,
+                                       new { @class = "form-control", placeholder = "X hours a week", required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        @Html.TextAreaFor(x => x.Description,
+                                  new { @class = "form-control", placeholder = "Job description", required = "required" })
+                    </div>
+                    <div class="col-lg-12">
+                        <ul>
+                            <li><button class="active" type="submit" value="post">Post</button></li>
+                            <li><a href="#" title="">Cancel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div><!--post-project-fields end-->
+        <a href="#" title=""><i class="la la-times-circle-o"></i></a>
+    </div><!--post-project end-->
+</div><!--post-project-popup end-->

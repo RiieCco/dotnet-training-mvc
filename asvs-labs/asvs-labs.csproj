@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\banner1.svg" />
+    <Content Remove="wwwroot\images\icon5.png" />
+    <Content Remove="wwwroot\images\icon4.png" />
+    <Content Remove="wwwroot\images\pro-icon2.png" />
+    <Content Remove="wwwroot\images\ic1.png" />
+    <Content Remove="wwwroot\images\price2.png" />
+    <Content Remove="wwwroot\images\clock.png" />
+    <Content Remove="wwwroot\images\cp.png" />
+    <Content Remove="wwwroot\images\photo-icon.png" />
+    <Content Remove="wwwroot\images\process-icon.png" />
+    <Content Remove="wwwroot\images\all-out.png" />
+    <Content Remove="wwwroot\images\chat.png" />
+    <Content Remove="wwwroot\images\cm-logo.png" />
+    <Content Remove="wwwroot\images\smley.png" />
+    <Content Remove="wwwroot\images\envelop.png" />
+    <Content Remove="wwwroot\js\popper.js" />
+    <Content Remove="wwwroot\js\jquery.mCustomScrollbar.js" />
+    <Content Remove="wwwroot\js\jquery.min.js" />
+    <Content Remove="wwwroot\js\script.js" />
+    <Content Remove="wwwroot\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\js\scrollbar.js" />
+    <Content Remove="wwwroot\js\jquery.range-min.js" />
+    <Content Remove="wwwroot\js\flatpickr.min.js" />
+    <Content Remove="wwwroot\lib\slick\ajax-loader.gif" />
+    <Content Remove="wwwroot\lib\slick\slick.css" />
+    <Content Remove="wwwroot\lib\slick\slick-theme.css" />
+    <Content Remove="wwwroot\lib\slick\fonts\slick.svg" />
+    <Content Remove="wwwroot\lib\slick\fonts\slick.woff" />
+    <Content Remove="wwwroot\lib\slick\fonts\slick.ttf" />
+    <Content Remove="wwwroot\lib\slick\fonts\slick.eot" />
+    <Content Remove="wwwroot\lib\slick\slick.min.js" />
+    <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Remove="Views\Account\Settings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Profiles\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Messages\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\AuthenticationController.cs" />
+    <Compile Remove="Controllers\JobController.cs" />
+  </ItemGroup>
+</Project>

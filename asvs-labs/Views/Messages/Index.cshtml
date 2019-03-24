@@ -1,0 +1,53 @@
+﻿@model List<asvslabs.ViewModels.MessageViewModel>
+
+@{
+    ViewData["Title"] = "Messages";
+}
+
+<section class="messages-page">
+    <div class="container">
+        <div class="messages-sec">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 no-pdd">
+                    <div class="msgs-list">
+                        <div class="msg-title">
+                            <h3>Messages</h3>
+
+                        </div><!--msg-title end-->
+                        <div class="messages-list">
+                            <ul>
+                                @foreach (var user in Model)
+                                {
+                                    <li class="active">
+                                        <div class="usr-msg-details">
+                                            <div class="usr-ms-img">
+                                                <img src="http://via.placeholder.com/50x50" alt="">
+                                                <span class="msg-status"></span>
+                                            </div>
+                                            <div class="usr-mg-info">
+                                                <br />
+                                                <h3>@Html.DisplayFor(x => user.UserName)</h3>
+                                                <center><a href="/Messages/ShowChat/@Html.DisplayFor(x => user.UserId)"><li class="fa fa-comment"></li></a></center>
+                                            </div><!--usr-mg-info end-->
+                                        </div><!--usr-msg-details end-->
+                                    </li>
+                                }
+                            </ul>
+                        </div><!--messages-list end-->
+                    </div><!--msgs-list end-->
+                </div>
+                <div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+                    <div class="main-conversation-box">
+                        <center>
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <h1>Welcome to messaging!</h1>
+                            <p>Select a user you want to send messages to!</p>
+
+                            <i class="fa fa-envelope" style="font-size:4em; padding-bottom:20%" aria-hidden="true"></i>
+                        </center>
+                    </div><!--main-conversation-box end-->
+                </div>
+            </div>
+        </div><!--messages-sec end-->
+    </div>
+</section><!--messages-page end-->

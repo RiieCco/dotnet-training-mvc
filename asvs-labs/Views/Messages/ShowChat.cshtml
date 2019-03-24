@@ -1,0 +1,73 @@
+﻿@model asvslabs.ViewModels.MessageViewModel
+
+@{
+    ViewData["Title"] = "Messaging";
+}
+
+<section class="messages-page">
+    <div class="container">
+        <div class="messages-sec">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 no-pdd">
+                    <div class="msgs-list">
+                        <div class="msg-title">
+                            <a href="/Messages"><h3><li class="fa fa-arrow-left"></li> Back to overview </h3></a>
+
+                        </div><!--msg-title end-->
+                        <div class="messages-list">
+                            <ul></ul>
+                        </div><!--messages-list end-->
+                    </div><!--msgs-list end-->
+                </div>
+                <div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+                    <div class="main-conversation-box">
+                        <div class="messages-line">
+                            @foreach (var message in Model.MessageList)
+                            {
+                                <div class="main-message-box ta-right">
+                                    <div class="message-dt">
+                                        <br />
+                                        <div class="message-inner-dt">
+                                            <p>
+                                                @Html.DisplayFor(x => message.Message)
+                                                @Html.DisplayFor(x => message.ImagePath)
+                                            </p>
+                                        </div><!--message-inner-dt end-->
+                                    </div><!--message-dt end-->
+                                    <div class="messg-usr-img">
+                                        <img src="http://via.placeholder.com/50x50" alt="">
+                                    </div><!--messg-usr-img end-->
+                                </div><!--main-message-box end-->
+                            }
+                            <div class="main-message-box st3">
+                                <div class="message-dt st3">
+                                    <div class="message-inner-dt">
+                                        <p>Lorem ipsum dolor sit amet</p>
+                                    </div><!--message-inner-dt end-->
+                                    <span>2 minutes ago</span>
+                                </div><!--message-dt end-->
+                                <div class="messg-usr-img">
+                                    <img src="http://via.placeholder.com/50x50" alt="">
+                                </div><!--messg-usr-img end-->
+                            </div><!--main-message-box end-->
+                        </div><!--messages-line end-->
+                        <div class="message-send-area">
+                            @using (Html.BeginForm("StoreMessage", "Messages", FormMethod.Post))
+                             {
+                        <div class="mf-field">
+                            @Html.TextBoxFor(x=>x.Message)
+                            <button type="submit">Send</button>
+                        </div>
+                        <ul>
+                            <li><a href="#" title=""><i class="fa fa-smile-o"></i></a></li>
+                            <li><a href="#" title=""><i class="fa fa-camera"></i></a></li>
+                            <li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
+                        </ul>
+                            }
+                        </div><!--message-send-area end-->
+                    </div><!--main-conversation-box end-->
+                </div>
+            </div>
+        </div><!--messages-sec end-->
+    </div>
+</section><!--messages-page end-->
