@@ -56,4 +56,7 @@
     <Compile Remove="Controllers\AuthenticationController.cs" />
     <Compile Remove="Controllers\JobController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="identity.db" />
+  </ItemGroup>
 </Project>

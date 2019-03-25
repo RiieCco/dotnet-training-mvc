@@ -33,7 +33,7 @@ namespace asvs_labs.Controllers
                     { 
                         Title = x.Title,
                         Description = x.Description,
-                        Webiste = x.Category,
+                        Webiste = x.Website,
                         Employment = x.Employment,
                         Skills = x.Skills,
                         Price = x.Price 
@@ -47,7 +47,7 @@ namespace asvs_labs.Controllers
         {
             JobModel addJob = new JobModel { 
                 Title = model.Title,
-                Category = model.Webiste,
+                Website = model.Webiste,
                 Description = model.Description,
                 Skills = model.Skills,
                 Employment = model.Employment,

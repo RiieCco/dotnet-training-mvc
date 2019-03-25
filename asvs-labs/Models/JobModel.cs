@@ -14,7 +14,7 @@ namespace asvslabs.Models
         [Key]
         public int jobID { get; set; }
         public string Title { get; set; } 
-        public string Category { get; set; }
+        public string Website { get; set; }
         public string Skills { get; set; }
         public int Price { get; set; }
         public string Employment { get; set; }

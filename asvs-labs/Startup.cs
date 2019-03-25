@@ -80,7 +80,7 @@ namespace asvs_labs
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Init}/{action=Index}/{id?}");
             });
         }
     }
