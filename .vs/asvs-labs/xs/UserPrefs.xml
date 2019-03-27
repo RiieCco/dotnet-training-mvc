@@ -1,20 +1,27 @@
 ﻿<Properties StartupConfiguration="{14D82C42-B58A-4B2C-83C0-5FABA344E767}|Default">
   <MonoDevelop.Ide.ItemProperties.asvs-labs PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="asvs-labs/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="asvs-labs/Controllers/MessagesController.cs">
     <Files>
-      <File FileName="asvs-labs/Controllers/MessagesController.cs" Line="78" Column="49" />
-      <File FileName="asvs-labs/Views/Messages/ShowChat.cshtml" Line="39" Column="26" />
-      <File FileName="asvs-labs/Views/Shared/_Layout.cshtml" Line="71" Column="30" />
+      <File FileName="asvs-labs/Controllers/MessagesController.cs" Line="133" Column="7" />
+      <File FileName="asvs-labs/Views/Messages/ShowChat.cshtml" Line="74" Column="26" />
+      <File FileName="asvs-labs/Views/Messages/Index.cshtml" Line="12" Column="53" />
+      <File FileName="asvs-labs/Views/Home/Index.cshtml" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="asvs-labs" expanded="True">
             <Node name="asvs-labs" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="MessagesController.cs" selected="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="Home" expanded="True" />
+                <Node name="Messages" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="history" expanded="True" />
               </Node>
             </Node>
           </Node>

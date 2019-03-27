@@ -25,7 +25,7 @@
                             @foreach (var message in Model.MessageList)
                             {
                                 <br />
-                                if (message.SendFrom == Model.SendTo)
+                                if (message.SendFrom != Model.SendTo)
                                 {
                                     <div class="main-message-box">
                                         <div class="messg-usr-img">
@@ -34,7 +34,8 @@
                                         <div class="message-dt">
                                             <div class="message-inner-dt img-bx">
                                                 @Html.DisplayFor(x => message.Message)
-                                            </div><!--message-inner-dt end-->
+                                                <a style="color:black" href="/Messages/DownloadImage/@Html.DisplayFor(x => message.ImagePath)">Download: @Html.DisplayFor(x => message.ImagePath)</a>
+                                           </div><!--message-inner-dt end-->
                                             <span>Sat, Aug 23, 1:08 PM</span>
                                         </div><!--message-dt end-->
                                     </div><!--main-message-box end-->
@@ -44,7 +45,10 @@
                                     <div class="main-message-box ta-right">
                                         <div class="message-dt">
                                             <div class="message-inner-dt">
-                                                <p>@Html.DisplayFor(x => message.Message)</p>
+                                                <p>
+                                                    @Html.DisplayFor(x => message.Message)
+                                                    <a style="color:white" href="/Messages/DownloadImage/@Html.DisplayFor(x => message.ImagePath)">Download: @Html.DisplayFor(x => message.ImagePath)</a>
+                                                </p>
                                             </div><!--message-inner-dt end-->
                                             <span>Sat, Aug 23, 1:08 PM</span>
                                         </div><!--message-dt end-->
@@ -63,11 +67,17 @@
                                     @Html.HiddenFor(x => x.SendTo)
                                     <button type="submit">Send</button>
                                 </div>
-                                <ul>
-                                    <li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
-                                </ul>
                             }
 
+                            @using (Html.BeginForm("StoreImage", "Messages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div class="mf-field">
+                                    <br />
+                                    <input type="file" name="file" />
+                                    @Html.HiddenFor(x => x.SendTo)
+                                    <button type="submit">Upload</button>
+                                </div>
+                            }
                         </div><!--message-send-area end-->
                     </div><!--main-conversation-box end-->
                 </div>

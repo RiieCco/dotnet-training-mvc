@@ -17,5 +17,6 @@ namespace asvslabs.ViewModels
         public string SendTo { get; set; }
         public string Message { get; set; }
         public string ImagePath { get; set; }
-    }
+        public  IFormFile File { get; set; }
+  }
 }

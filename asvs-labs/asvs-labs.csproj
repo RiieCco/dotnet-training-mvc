@@ -45,12 +45,15 @@
     <Content Remove="wwwroot\lib\slick\slick.min.js" />
     <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="Views\Account\Settings.cshtml" />
+    <Content Remove="wwwroot\uploads\Screenshot 2019-03-22 at 12.46.50.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profiles\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Messages\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\uploads\" />
+    <Folder Include="wwwroot\history\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\AuthenticationController.cs" />
