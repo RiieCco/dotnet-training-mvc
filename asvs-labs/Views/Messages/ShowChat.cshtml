@@ -32,10 +32,10 @@
                                             <img src="http://via.placeholder.com/50x50" alt="">
                                         </div><!--messg-usr-img end-->
                                         <div class="message-dt">
-                                            <div class="message-inner-dt img-bx">
-                                                @Html.DisplayFor(x => message.Message)
-                                                <a style="color:black" href="/Messages/DownloadImage/@Html.DisplayFor(x => message.ImagePath)">Download: @Html.DisplayFor(x => message.ImagePath)</a>
-                                           </div><!--message-inner-dt end-->
+                                          <div class="message-inner-dt img-bx">
+                                            @Html.DisplayFor(x => message.Message)
+                                            @Html.DisplayFor(x => message.ImagePath)
+                                          </div><!--message-inner-dt end-->
                                             <span>Sat, Aug 23, 1:08 PM</span>
                                         </div><!--message-dt end-->
                                     </div><!--main-message-box end-->
@@ -47,7 +47,7 @@
                                             <div class="message-inner-dt">
                                                 <p>
                                                     @Html.DisplayFor(x => message.Message)
-                                                    <a style="color:white" href="/Messages/DownloadImage/@Html.DisplayFor(x => message.ImagePath)">Download: @Html.DisplayFor(x => message.ImagePath)</a>
+                                                    @Html.DisplayFor(x => message.ImagePath)
                                                 </p>
                                             </div><!--message-inner-dt end-->
                                             <span>Sat, Aug 23, 1:08 PM</span>

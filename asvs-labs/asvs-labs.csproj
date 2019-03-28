@@ -46,6 +46,7 @@
     <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="Views\Account\Settings.cshtml" />
     <Content Remove="wwwroot\uploads\Screenshot 2019-03-22 at 12.46.50.png" />
+    <Content Remove="wwwroot\history\history.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Profiles\" />
@@ -53,7 +54,6 @@
     <Folder Include="Views\Messages\" />
     <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\uploads\" />
-    <Folder Include="wwwroot\history\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\AuthenticationController.cs" />
@@ -61,5 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="identity.db" />
+    <None Remove="Controllers\subs.txt" />
   </ItemGroup>
 </Project>

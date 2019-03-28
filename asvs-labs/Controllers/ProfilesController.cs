@@ -10,27 +10,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace asvslabs.Controllers
 {
-    public class ProfilesController : Controller
-    { 
-        private IdentityContext IdentityContext;
-        public ProfilesController(IdentityContext db) { IdentityContext = db; }
+  public class ProfilesController : Controller
+  {
+    private IdentityContext IdentityContext;
+    public ProfilesController(IdentityContext db) { IdentityContext = db; }
 
-        // GET: /<controller>/
-        public IActionResult Index()
+    // GET: /<controller>/
+    public IActionResult Index()
+    {
+      var userId = User.Identity.Name;
+      var users = IdentityContext.Users.Where(x => x.UserName != userId).ToList();
+      ProfileViewModel model = new ProfileViewModel();
+      model.UserList = new List<ProfileViewModel>();
+
+      foreach (var profiles in users)
+      {
+        model.UserList.Add(new ProfileViewModel
         {
-          var users = IdentityContext.Users.ToList();
-          ProfileViewModel model = new ProfileViewModel();
-          model.UserList = new List<ProfileViewModel>();
-        
-          foreach (var profiles in users) 
-          {
-             model.UserList.Add(new ProfileViewModel
-             {
-              UserName = profiles.UserName,
-              userId = profiles.Id
-            });
-          }
-          return View(model);
-        }
+          UserName = profiles.UserName,
+          userId = profiles.Id
+        });
+      }
+      return View(model);
     }
+  }
 }

@@ -48,55 +48,57 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="login-sec">
-                                <ul class="sign-control">
-                                    <li data-tab="tab-1" class="current"><a href="#" title="">Sign in</a></li>
-                                    <li data-tab="tab-2"><a href="#" title="">Sign up</a></li>
-                                </ul>
-                                <div class="sign_in_sec current" id="tab-1">
+                              <ul class="sign-control">
+                                <!--l<li data-tab="tab-1" class="current"><a href="#" title="">Sign in</a></li>
+  i data-tab="tab-2"><a href="#" title="">Sign up</a></!--li>-->
+                              </ul>
+                              <div class="sign_in_sec current" id="tab-1">
 
-                                    <h3>Sign in</h3>
-                                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-                                    {
-                                        <div class="row">
-                                            <div class="col-lg-12 no-pdd">
-                                                <div class="sn-field">
-                                                    @Html.TextBoxFor(x => x.LoginViewModel.Email,
-                                                    new { @class = "form-control", placeholder = "username", required = "required" })
-                                                    <i class="la la-user"></i>
-                                                </div><!--sn-field end-->
-                                            </div>
-                                            <div class="col-lg-12 no-pdd">
-                                                <div class="sn-field">
-                                                    @Html.PasswordFor(x => x.LoginViewModel.Password,
-                                                     new { @class = "form-control", placeholder = "password", required = "required" })
-                                                <i class="la la-lock"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 no-pdd">
-                                                <div class="checky-sec">
-                                                    <div class="fgt-sec">
-                                                        <input type="checkbox" name="cc" id="c1">
-                                                        <label for="c1">
-                                                            <span></span>
-                                                        </label>
-                                                        <small>Remember me</small>
-                                                    </div><!--fgt-sec end-->
-                                                    <a href="#" title="">Forgot Password?</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 no-pdd">
-                                                <button type="submit" value="submit">Sign in</button>
-                                            </div>
-                                        </div>
-                                    }
-                                    <div class="login-resources">
-                                        <h4>Login Via Social Account</h4>
-                                        <ul>
-                                            <li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
-                                            <li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
-                                        </ul>
-                                    </div><!--login-resources end-->
-                                </div><!--sign_in_sec end-->
+                                <h3>Sign in</h3>
+                                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+  {
+                              <div class="row">
+                                <div class="col-lg-12 no-pdd">
+                                  <div class="sn-field">
+                                    @Html.TextBoxFor(x => x.LoginViewModel.Email,
+           new { @class = "form-control", placeholder = "username", required = "required" })
+                                    <i class="la la-user"></i>
+                                  </div><!--sn-field end-->
+                                </div>
+                                <div class="col-lg-12 no-pdd">
+                                  <div class="sn-field">
+                                    @Html.PasswordFor(x => x.LoginViewModel.Password,
+            new { @class = "form-control", placeholder = "password", required = "required" })
+                                    <i class="la la-lock"></i>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12 no-pdd">
+                                  <div class="checky-sec">
+                                    <div class="fgt-sec">
+                                      <!-- <input type="checkbox" name="cc" id="c1">-->
+                                      <label for="c1">
+                                        <span></span>
+                                      </label>
+                                      <!--     <small>Remember me</small>-->
+                                    </div><!--fgt-sec end-->
+                                    <!--<a href="#" title="">Forgot Password?</a>-->
+                                  </div>
+                                </div>
+                                <div class="col-lg-12 no-pdd">
+                                  <button type="submit" value="submit">Sign in</button>
+                                </div>
+                              </div>
+}
+                                <!--
+        <div class="login-resources">
+            <h4>Login Via Social Account</h4>
+            <ul>
+                <li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
+                <li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
+            </ul>
+        </div><!--login-resources end-->
+                                
+                              </div><!--sign_in_sec end-->
                                 <div class="sign_in_sec" id="tab-2">
                                     <div class="signup-tab">
                                         <h2>Create a new accosdsdsunt!</h2>

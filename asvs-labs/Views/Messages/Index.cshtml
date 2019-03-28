@@ -9,7 +9,7 @@
         <div class="messages-sec">
           <div class="row">
             <div style="padding-bottom:10px;" class="mf-field">
-              <a href="/Messages/DownloadChatHistory/@ViewData["userId"]">Download chat history</a>
+              <a href="/Messages/DownloadChatHelp/?file=help.txt">Download help file!</a>
             </div>
             <div class="col-lg-4 col-md-12 no-pdd">
               <div class="msgs-list">
@@ -29,8 +29,8 @@
                 </div>
                 <div class="usr-mg-info">
                   <br />
-                  <h3>@Html.DisplayFor(x => user.UserName)</h3>
-                  <center><a href="/Messages/ShowChat/@Html.DisplayFor(x => user.UserId)">
+                  <h3>@Html.DisplayFor(x => user.SendTo)</h3>
+                  <center><a href="/Messages/ShowChat/@Html.DisplayFor(x => user.SendTo)">
             <li class="fa fa-comment"></li></a></center>
           </div><!--usr-mg-info end-->
           </div><!--usr-msg-details end-->

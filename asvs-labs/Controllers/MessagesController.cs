@@ -27,15 +27,17 @@ namespace asvslabs.Controllers
     public IActionResult Index()
     {
       MessageViewModel model = new MessageViewModel();
-      var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+      var userId = User.Identity.Name;
       ViewData["userId"] = userId;
       var users = (from u in IdentityContext.Messages
                    group u by u.SendTo into u2
                    join e in IdentityContext.Users
-                   on u2.FirstOrDefault().SendTo equals e.Id
+                   on u2.FirstOrDefault().SendFrom equals e.UserName
+                   where u2.FirstOrDefault().SendFrom == userId
                    select new MessageViewModel
                    {
                      UserName = e.UserName,
+                     SendTo = u2.FirstOrDefault().SendTo,
                      UserId = e.Id
                    }).ToList();
       return View(users);
@@ -44,7 +46,7 @@ namespace asvslabs.Controllers
     // GET: /<controller>/
     public IActionResult StoreMessage(MessageViewModel model)
     {
-      var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+      var userId = HttpContext.User.Identity.Name;
       MessagesModel message = new MessagesModel
       {
         Message = model.Message,
@@ -61,7 +63,7 @@ namespace asvslabs.Controllers
     // GET: /<controller>/
     public IActionResult StoreImage(MessageViewModel model)
     {
-      var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+      var userId = User.Identity.Name;
       if (model.File == null || model.File.Length == 0)
       {
         return Content("file not selected");
@@ -87,20 +89,10 @@ namespace asvslabs.Controllers
       return RedirectToAction("ShowChat", new { Id = model.SendTo });
     }
 
-    public ActionResult DownloadImage(string id)
-    {
-      var path = Path.Combine(
-                 Directory.GetCurrentDirectory(), "wwwroot/uploads",
-                 id);
-      byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-      return File(fileBytes, "application/force-download", id);
-    }
-  
-
     // GET: /<controller>/
     public IActionResult ShowChat(string id)
     {
-      var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+      var userId = User.Identity.Name;
       var messages = IdentityContext.Messages.Where(x => x.SendTo == id || x.SendFrom == id);
       MessageViewModel model = new MessageViewModel();
       model.MessageList = new List<MessageViewModel>();
@@ -119,20 +111,6 @@ namespace asvslabs.Controllers
         }
       }
       return View(model);
-    }
-
-    // GET: /<controller>/
-    public IActionResult DownloadChatHistory(string id)
-    {
-      string path = "wwwroot/history/history.txt";
-      var messages = IdentityContext.Messages.Where(x => x.SendTo == id || x.SendFrom == id);
-
-      foreach (var text in messages) {
-        System.IO.File.AppendAllText(path, text.Message);
-      }
-
-      byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-      return File(fileBytes, "application/force-download", path); ;
     }
   }
 }

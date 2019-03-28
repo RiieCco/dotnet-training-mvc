@@ -39,10 +39,8 @@ namespace asvslabs.Controllers
     {
       var user1 = new IdentityUser{UserName = "user1", Email = "user1@user1.com"};
       var user2 = new IdentityUser{UserName = "user2", Email = "user2@user2.com"};
-      var user3 = new IdentityUser{UserName = "user3", Email = "user3@user3.com" };
       _userManager.CreateAsync(user2, "Password01!");
       _userManager.CreateAsync(user1, "Password01!");
-      _userManager.CreateAsync(user3, "Password01!");
 
       JobModel wordpress = new JobModel { Title = "Wordpress Developer", Description = "We are looking for a new wordpress developer that has a lot of good experience writing his own plugins. we need this to customize websites for our customers to give them the post possible results!", Website = "https://wordpress.com", Employment = "40", Skills="PHP, CSS, JS, HMTL", Price= 60};
       JobModel appsec = new JobModel { Title = "Application security specialist", Description = "We are looking for an expert security specialist to help us with doing security testing on our web applications. It is a pre id you know OWASP and ASVS and how to set up security test automation in CI/CD pipelines", Website = "https://owasp.org", Employment = "40", Skills = "Docker, OWASP, Appsec", Price = 150 };

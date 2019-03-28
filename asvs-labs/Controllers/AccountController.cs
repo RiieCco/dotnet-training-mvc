@@ -11,77 +11,78 @@ using Microsoft.Extensions.Configuration;
 
 namespace asvslabs.Controllers
 {
-    public class AccountController : Controller
+  public class AccountController : Controller
+  {
+
+    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly IConfiguration _configuration;
+
+    public AccountController
+      (
+      UserManager<IdentityUser> userManager,
+      SignInManager<IdentityUser> signInManager,
+      IConfiguration configuration
+      )
     {
+      _userManager = userManager;
+      _signInManager = signInManager;
+      _configuration = configuration;
+    }
 
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IConfiguration _configuration;
+    // GET: /<controller>/
+    public IActionResult Index()
+    {
+      return View(new AccountRegisterViewModel());
+    }
 
-        public AccountController
-          (
-          UserManager<IdentityUser> userManager,
-          SignInManager<IdentityUser> signInManager,
-          IConfiguration configuration
-          )
+    public async Task<IActionResult> Login(AccountRegisterViewModel model)
+    {
+      var result = await _signInManager.PasswordSignInAsync(model.LoginViewModel.Email, model.LoginViewModel.Password, false, false);
+
+      if (result.Succeeded)
+      {
+        return RedirectToAction("Index", "Home");
+      }
+      else
+      {
+        return RedirectToAction("Index", "Account");
+      }
+    }
+
+    public async Task<IActionResult> Register(AccountRegisterViewModel model)
+    {
+      if (ModelState.IsValid)
+      {
+        var user = new IdentityUser
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _configuration = configuration;
-        }
+          UserName = model.RegisterViewModel.Email,
+          Email = model.RegisterViewModel.Email
+        };
+        var result = await _userManager.CreateAsync(user, model.RegisterViewModel.Password);
 
-        // GET: /<controller>/
-        public IActionResult Index()
+        if (result.Succeeded)
         {
-            return View(new AccountRegisterViewModel());
+          await _signInManager.SignInAsync(user, false);
+          return RedirectToAction("Index", "Home");
         }
-
-        public async Task<IActionResult> Login(AccountRegisterViewModel model)
-        { 
-            var result = await _signInManager.PasswordSignInAsync(model.LoginViewModel.Email, model.LoginViewModel.Password, false, false);
-
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                return RedirectToAction("Index", "Account");
-            }
-        }
-
-        public async Task<IActionResult> Register(AccountRegisterViewModel model)
+        else
         {
-            if (ModelState.IsValid)
-            {
-                var user = new IdentityUser
-                {
-                    UserName = model.RegisterViewModel.Email,
-                    Email = model.RegisterViewModel.Email
-                };
-                var result = await _userManager.CreateAsync(user, model.RegisterViewModel.Password);
-
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Account");
-                }
-            }
-            else
-            {
-                return RedirectToAction("Index", "Account");
-            }
+          return RedirectToAction("Index", "Account");
         }
+      }
+      else
+      {
+        return RedirectToAction("Index", "Account");
+      }
+    }
 
-        // GET: /<controller>/
-        public IActionResult UpdateSettings()
-        {
-            return View();
-        }
+    // GET: /<controller>/
+    public IActionResult Logout()
+    {
+      _signInManager.SignOutAsync();
+      return RedirectToAction("Index", "Home");
 
     }
+  }
 }
